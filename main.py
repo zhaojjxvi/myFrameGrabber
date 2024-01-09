@@ -64,12 +64,14 @@ def select_video():
 select_video_button = tk.Button(bottom, text='Open Video', width=10, command=select_video)
 select_video_button.pack()
 
+
 def save_img():
     v = scale_slider.get()
     frame = video_file[int(v)]
 
     img1 = Image.fromarray(frame.asnumpy())  # 将帧转换为PIL Image对象
     img1.save(f'{video_details[0]}_{v}.jpg')  # 将PIL Image保存为图片
+
 
 save_img_button = tk.Button(bottom, text="Save As.", width=10, command=save_img)
 save_img_button.pack()
@@ -93,8 +95,6 @@ def grab_frame(v):
     img1_file = ImageTk.PhotoImage(image=img1)
     canvas.itemconfigure(image_widget, image=img1_file)
 
-    # print(v)
-
 
 # create a slide for frame select
 scale_slider = tk.Scale(bottom, label='Slide to choose frame', from_=0, to=0, orient=tk.HORIZONTAL, length=400,
@@ -112,14 +112,11 @@ def ff():
     scale_slider.set(scale_slider.get() + 1)
 
 
-
-
 # create the widgets for the bottom part of the GUI,
 # and lay them out
 b = tk.Button(bottom, text="Rewind", width=10, height=2, command=rewind)
 c = tk.Button(bottom, text="F.F.", width=10, height=2, command=ff)
 b.pack(in_=bottom, side=tk.LEFT, expand=True)
 c.pack(in_=bottom, side=tk.LEFT, expand=True)
-
 
 root.mainloop()
