@@ -96,7 +96,7 @@ def grab_frame(v):
     # print(v)
 
 
-# 创建一个尺度滑条
+# create a slide for frame select
 scale_slider = tk.Scale(bottom, label='Slide to choose frame', from_=0, to=0, orient=tk.HORIZONTAL, length=400,
                         showvalue=False,
                         tickinterval=10, resolution=1, command=grab_frame)
@@ -118,10 +118,8 @@ def ff():
 # and lay them out
 b = tk.Button(bottom, text="Rewind", width=10, height=2, command=rewind)
 c = tk.Button(bottom, text="F.F.", width=10, height=2, command=ff)
-
 b.pack(in_=bottom, side=tk.LEFT, expand=True)
 c.pack(in_=bottom, side=tk.LEFT, expand=True)
 
 
-# 主窗口循环显示
 root.mainloop()
