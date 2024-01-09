@@ -18,7 +18,7 @@ def video_prepare(video_path):
 
 
 root = tk.Tk()
-root.title('FrameParser')
+root.title('my Frame Grabber')
 root.geometry('1000x750')
 
 top = tk.Frame(root)
@@ -110,11 +110,11 @@ root.bind("<Up>", lambda e: print(scale_slider.get()))
 
 
 def rewind():
-    scale_slider.set(scale_slider.get() - 1)
+    scale_slider.set(scale_slider.get() - 30)
 
 
 def ff():
-    scale_slider.set(scale_slider.get() + 1)
+    scale_slider.set(scale_slider.get() + 30)
 
 
 # create the widgets for the bottom part of the GUI,
