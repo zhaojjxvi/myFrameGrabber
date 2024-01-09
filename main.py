@@ -71,7 +71,7 @@ def save_img():
     frame = video_file[int(v)]
 
     img1 = Image.fromarray(frame.asnumpy())  # 将帧转换为PIL Image对象
-    img1.save(f'{video_details[0]}_{v}.jpg')  # 将PIL Image保存为图片
+    img1.save(f'output/{video_details[2]}_{v}.jpg')  # 将PIL Image保存为图片
 
 
 save_img_button = tk.Button(bottom, text="Save As.", width=10, command=save_img)
