@@ -61,8 +61,18 @@ def select_video():
     canvas.itemconfigure(image_widget, image=video_f0)
 
 
-select_video_button = tk.Button(bottom, text='Open Video', command=select_video)
+select_video_button = tk.Button(bottom, text='Open Video', width=10, command=select_video)
 select_video_button.pack()
+
+def save_img():
+    v = scale_slider.get()
+    frame = video_file[int(v)]
+
+    img1 = Image.fromarray(frame.asnumpy())  # 将帧转换为PIL Image对象
+    img1.save(f'{video_details[0]}_{v}.jpg')  # 将PIL Image保存为图片
+
+save_img_button = tk.Button(bottom, text="Save As.", width=10, command=save_img)
+save_img_button.pack()
 
 # to place a blank space
 blank_label2_widget = tk.Label(bottom, fg='white', width=20, text='')
@@ -102,22 +112,16 @@ def ff():
     scale_slider.set(scale_slider.get() + 1)
 
 
-def save_img():
-    v = scale_slider.get()
-    frame = video_file[int(v)]
-
-    img1 = Image.fromarray(frame.asnumpy())  # 将帧转换为PIL Image对象
-    img1.save(f'{video_details[0]}_{v}.jpg')  # 将PIL Image保存为图片
 
 
 # create the widgets for the bottom part of the GUI,
 # and lay them out
 b = tk.Button(bottom, text="Rewind", width=10, height=2, command=rewind)
 c = tk.Button(bottom, text="F.F.", width=10, height=2, command=ff)
-d = tk.Button(bottom, text="Save As.", width=10, height=2, command=save_img)
-c.pack(in_=bottom, side=tk.RIGHT)
-b.pack(in_=bottom, side=tk.RIGHT)
-d.pack(in_=bottom, side=tk.BOTTOM)
+
+b.pack(in_=bottom, side=tk.LEFT, expand=True)
+c.pack(in_=bottom, side=tk.LEFT, expand=True)
+
 
 # 主窗口循环显示
 root.mainloop()
