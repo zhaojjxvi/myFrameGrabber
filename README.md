@@ -12,7 +12,7 @@ So this idea comes to my brain, I just want to code myself for this function
 I mainly use `Tkinter` to build the visual window, and `decord` to process the frame grabbing task.  
 It seems like that I still have a long way to go for developing visual python program.
 
-Actually, this is my first project for my own life after a few years of learning, reading and coding
+Actually, this is my first project for my own life after a few years of learning, reading and coding.  
 At least, I complete the function I need.
 
 Deane  
