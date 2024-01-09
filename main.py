@@ -31,6 +31,7 @@ bottom.pack(side=tk.BOTTOM, fill=tk.BOTH, expand=True)
 init_path = 'media/init_video.avi'
 video_details = video_prepare(init_path)
 video_f0 = video_details[4]
+video_file = video_details[5]
 
 # to place the video frame 0 picture
 canvas = tk.Canvas(top, height=500, width=1000)
@@ -102,6 +103,10 @@ scale_slider = tk.Scale(bottom, label='Slide to choose frame', from_=0, to=0, or
                         tickinterval=10, resolution=1, command=grab_frame)
 scale_slider.set(0)
 scale_slider.pack()
+
+root.bind("<Left>", lambda e: scale_slider.set(scale_slider.get()-1))
+root.bind("<Right>", lambda e: scale_slider.set(scale_slider.get()+1))
+root.bind("<Up>", lambda e: print(scale_slider.get()))
 
 
 def rewind():
