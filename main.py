@@ -110,11 +110,11 @@ root.bind("<Up>", lambda e: print(scale_slider.get()))
 
 
 def rewind():
-    scale_slider.set(scale_slider.get() - 30)
+    scale_slider.set(scale_slider.get() - 1)
 
 
 def ff():
-    scale_slider.set(scale_slider.get() + 30)
+    scale_slider.set(scale_slider.get() + 1)
 
 
 # create the widgets for the bottom part of the GUI,
