@@ -6,15 +6,15 @@ import os
 
 
 def video_prepare(video_path):
-    video_file = decord.VideoReader(video_path)
-    video_frame_count = len(video_file)
-    video_folder, video_filename = os.path.split(video_path)
-    video_f0 = Image.fromarray(video_file[0].asnumpy())
+    vid_file = decord.VideoReader(video_path)
+    vid_frame_count = len(vid_file)
+    vid_folder, vid_filename = os.path.split(video_path)
+    vid_f0 = Image.fromarray(vid_file[0].asnumpy())
     thumbnail_size = (800, 450)
-    video_f0.thumbnail(thumbnail_size)
-    video_f0 = ImageTk.PhotoImage(image=video_f0)
-    video_details = [video_path, video_frame_count, video_filename, video_folder, video_f0, video_file]
-    return video_details
+    vid_f0.thumbnail(thumbnail_size)
+    vid_f0 = ImageTk.PhotoImage(image=vid_f0)
+    vid_details = [video_path, vid_frame_count, vid_filename, vid_folder, vid_f0, vid_file]
+    return vid_details
 
 
 root = tk.Tk()
@@ -45,7 +45,7 @@ blank_label1_widget.pack()
 
 # get video file and display relevant thumbnail picture
 def select_video():
-    video_path = filedialog.askopenfilename(filetypes=[("Video files", ".mp4 .avi .mov .wmv"),
+    video_path = filedialog.askopenfilename(filetypes=[("Video files", ".mp4 .avi .mov .wmv .MP4 .AVI .MOV .WMV"),
                                                        ("All files", "*.*")])
 
     global video_details
@@ -108,19 +108,9 @@ root.bind("<Left>", lambda e: scale_slider.set(scale_slider.get()-1))
 root.bind("<Right>", lambda e: scale_slider.set(scale_slider.get()+1))
 root.bind("<Up>", lambda e: print(scale_slider.get()))
 
-
-def rewind():
-    scale_slider.set(scale_slider.get() - 1)
-
-
-def ff():
-    scale_slider.set(scale_slider.get() + 1)
-
-
-# create the widgets for the bottom part of the GUI,
-# and lay them out
-b = tk.Button(bottom, text="Rewind", width=10, height=2, command=rewind)
-c = tk.Button(bottom, text="F.F.", width=10, height=2, command=ff)
+# create the widgets for the bottom part of the GUI, and lay them out
+b = tk.Button(bottom, text="Rewind", width=10, height=2, command=lambda: scale_slider.set(scale_slider.get()-1))
+c = tk.Button(bottom, text="F.F.", width=10, height=2, command=lambda: scale_slider.set(scale_slider.get()+1))
 b.pack(in_=bottom, side=tk.LEFT, expand=True)
 c.pack(in_=bottom, side=tk.LEFT, expand=True)
 
